@@ -6,16 +6,18 @@ module.exports = function () {
     var items = [];
 
     this.pages.map(function (page) {
-      items.push(h(
-        "a",
-        { "class": "pagination-link " + this.activeClass(page), attrs: { href: "javascript:void(0);"
+      items.push(h("li", [
+        h(
+          "a",
+          { "class": "pagination-link " + this.activeClass(page), attrs: { href: "javascript:void(0);"
+            },
+            on: {
+              "click": this.setPage.bind(this, page)
+            }
           },
-          on: {
-            "click": this.setPage.bind(this, page)
-          }
-        },
-        [page]
-      ));
+          [page]
+        )
+      ]));
     }.bind(this));
 
     return h(
