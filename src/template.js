@@ -5,43 +5,36 @@ module.exports = function() {
 
   this.pages.map(function(page) {
       items.push(
-        <li class={"VuePagination__pagination-item page-item "+this.activeClass(page)}>
-        <a class="page-link" href="javascript:void(0);"
+        <a class={"pagination-link "+this.activeClass(page)} href="javascript:void(0);"
         on-click={this.setPage.bind(this, page)}>{page}</a>
-        </li>
         )
   }.bind(this));
 
-  return <div class="VuePagination">
-  <ul v-show={this.totalPages>1}
-  class="pagination VuePagination__pagination">
-
-  <li class={"VuePagination__pagination-item page-item VuePagination__pagination-item-prev-chunk "+this.allowedChunkClass(-1)}>
-  <a class="page-link" href="javascript:void(0);"
-  on-click={this.setChunk.bind(this,-1)}>&lt;&lt;</a>
-  </li>
-
-
-  <li class={"VuePagination__pagination-item page-item VuePagination__pagination-item-prev-page "+this.allowedPageClass(this.page-1)}>
-  <a class="page-link" href="javascript:void(0);"
+  return <div>
+  <nav class={"pagination " +this.modifiers}>
+  <a class="pagination-previous" disabled={this.pageLinkDisabled(this.page-1)} href="javascript:void(0);"
   on-click={this.prev.bind(this)}>&lt;</a>
+  <a class="pagination-next" disabled={this.pageLinkDisabled(this.page+1)} href="javascript:void(0);"
+  on-click={this.next.bind(this)}>&gt;</a>
+
+  <ul v-show={this.totalPages>1}
+  class="pagination-list">
+
+  <li>
+  <a class="pagination-link" disabled={this.chunkLinkDisabled(-1)} href="javascript:void(0);"
+  on-click={this.setChunk.bind(this,-1)}>&lt;&lt;</a>
   </li>
 
   {items}
 
-  <li class={"VuePagination__pagination-item page-item VuePagination__pagination-item-next-page "+this.allowedPageClass(this.page+1)}>
-  <a class="page-link" href="javascript:void(0);"
-  on-click={this.next.bind(this)}>&gt;</a>
-  </li>
-
-  <li class={"VuePagination__pagination-item page-item VuePagination__pagination-item-next-chunk "+this.allowedChunkClass(1)}>
-  <a class="page-link" href="javascript:void(0);"
+  <li>
+  <a class="pagination-link" disabled={this.chunkLinkDisabled(1)} href="javascript:void(0);"
   on-click={this.setChunk.bind(this,1)}>&gt;&gt;</a>
   </li>
   </ul>
+  </nav>
+  <p v-show={parseInt(this.records)} class="has-text-centered">{this.count}</p>
+</div>
 
-  <p v-show={parseInt(this.records)}
-  class="VuePagination__count">{this.count}</p>
-  </div>
 }
 }
