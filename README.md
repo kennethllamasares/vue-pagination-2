@@ -1,4 +1,6 @@
-# Vue Pagination 2
+# Vue 2 Pagination with Bulma CSS
+
+This is a Fork from [matfish2/vue-pagination-2](https://github.com/matfish2/vue-pagination-2) which uses Bootstrap Css.
 
 Note: This package is for use with Vuejs 2.
 For version 1 please use [v-pagination](https://www.npmjs.com/package/v-pagination) instead.
@@ -16,7 +18,7 @@ Presentation is based on bootstrap.
 # Dependencies
 
 * Vue.js (>=2.0.0-rc.1). Required.
-* Bootstrap (CSS). Optional.
+* Bulma (CSS). Optional.
 
 # Installation
 
