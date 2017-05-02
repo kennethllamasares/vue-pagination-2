@@ -30,6 +30,10 @@ module.exports =
     },
     vuex: {
       type: Boolean
+    },
+    modifiers: {
+      type: String,
+      default: ''
     }
   },
   created: function() {
