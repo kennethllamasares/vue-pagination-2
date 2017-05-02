@@ -129,6 +129,12 @@ setChunk: function(direction) {
 allowedPage: function(page) {
   return page>=1 && page<=this.totalPages;
 },
+pageLinkDisabled: function(direction) {
+  return this.allowedPage(direction)? false : true;
+},
+chunkLinkDisabled: function(direction) {
+  return this.allowedChunk(direction)? false : true;
+},
 allowedChunk: function(direction) {
   return (direction==1 && this.currentChunk<this.totalChunks)
   ||  (direction==-1 && this.currentChunk>1);

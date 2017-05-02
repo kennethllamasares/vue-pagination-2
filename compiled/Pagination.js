@@ -129,6 +129,12 @@ module.exports = {
     allowedChunk: function allowedChunk(direction) {
       return direction == 1 && this.currentChunk < this.totalChunks || direction == -1 && this.currentChunk > 1;
     },
+    pageLinkDisabled: function pageLinkDisabled(direction) {
+      return this.allowedPage(direction) ? false : true;
+    },
+    chunkLinkDisabled: function chunkLinkDisabled(direction) {
+      return this.allowedChunk(direction) ? false : true;
+    },
     allowedPageClass: function allowedPageClass(direction) {
       return this.allowedPage(direction) ? '' : 'disabled';
     },
